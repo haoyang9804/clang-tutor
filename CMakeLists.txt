@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.13.4)
 project(clang-tutor)
 
+
+find_package(Clang REQUIRED)
+set(Clang_ROOT ${CLANG_CMAKE_DIR})
+
 #===============================================================================
 # 0. GET CLANG INSTALLATION DIR
 #===============================================================================
@@ -18,11 +22,13 @@ elseif(DEFINED Clang_DIR)
 endif()
 mark_as_advanced(CT_CLANG_PACKAGE_DIR)
 
+message(${CT_CLANG_PACKAGE_DIR})
+
 # Set this to a valid Clang installation directory. This is most likely where
 # LLVM is installed on your system.
 set(CT_Clang_INSTALL_DIR "${CT_CLANG_PACKAGE_DIR}" CACHE PATH
   "Clang installation directory")
-
+  message(${CT_Clang_INSTALL_DIR})
 #===============================================================================
 # 1. VERIFY CLANG INSTALLATION DIR
 #===============================================================================
